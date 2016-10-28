@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.special import gamma
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import axes3d
 
 n=30
 k = 100000
@@ -34,5 +35,19 @@ for i in range(k):
     np.random.shuffle(grades)
     ave.append(np.mean(grades[:8])-np.mean(grades[8:]))
 
-plt.hist(ave)
+#plt.hist(ave)
+#plt.show()
+
+phi = np.random.random(5000)*2*np.pi
+costheta = np.random.random(5000)*2-1
+theta = np.arccos(costheta)
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+x = np.sin(theta)*np.cos(phi)
+y = np.sin(theta)*np.sin(phi)
+z = costheta
+
+ax.scatter(x,y,z, s=1)
 plt.show()
